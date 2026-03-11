@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stone &amp; Grove — Luxury Landscape Architecture</title>
+    <title>Visionary Landscaping — Professional Landscape Services</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,13 +97,6 @@
             font-weight: 600;
             letter-spacing: 0.06em;
             white-space: nowrap;
-        }
-
-        .nav__wordmark-amp {
-            color: var(--color-sandstone);
-            font-style: italic;
-            font-weight: 400;
-            margin: 0 0.1em;
         }
 
         .nav__descriptor {
@@ -306,70 +299,17 @@
             animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.8s forwards;
         }
 
-        /* ============================================ ESTIMATOR */
-        .estimator {
+        /* ============================================ HERO CTA BUTTONS */
+        .hero__cta {
             display: flex;
-            align-items: stretch;
-            max-width: 38rem;
+            align-items: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
             opacity: 0;
             animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 1.05s forwards;
         }
 
-        .estimator--static {
-            opacity: 1;
-            animation: none;
-        }
-
-        .estimator__field {
-            flex: 1;
-            position: relative;
-            background: rgba(245, 240, 232, 0.04);
-            border: 1px solid rgba(90, 122, 98, 0.35);
-            border-right: none;
-            transition: border-color 0.3s ease, background 0.3s ease;
-        }
-
-        .estimator__field:focus-within {
-            border-color: rgba(201, 169, 110, 0.5);
-            background: rgba(245, 240, 232, 0.07);
-        }
-
-        .estimator__input {
-            display: block;
-            width: 100%;
-            padding: 1.05rem 1.4rem;
-            font-family: var(--font-body);
-            font-size: 0.82rem;
-            font-weight: 300;
-            letter-spacing: 0.03em;
-            color: var(--color-chalk);
-            background: transparent;
-            border: none;
-            outline: none;
-        }
-
-        .estimator__input::placeholder {
-            color: var(--color-ash);
-            font-weight: 300;
-        }
-
-        .estimator__accent {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, var(--color-sandstone), var(--color-moss));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .estimator__field:focus-within .estimator__accent {
-            transform: scaleX(1);
-        }
-
-        .estimator__btn {
+        .btn-primary {
             font-family: var(--font-body);
             font-size: 0.62rem;
             font-weight: 500;
@@ -382,16 +322,19 @@
             cursor: pointer;
             transition: background 0.35s ease, border-color 0.35s ease;
             white-space: nowrap;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        .estimator__btn:hover {
+        .btn-primary:hover {
             background: #336b42;
             border-color: #336b42;
         }
 
-        .estimator__label {
+        .hero__cta-label {
             display: block;
-            margin-top: 0.75rem;
+            margin-top: 1rem;
+            width: 100%;
             font-size: 0.62rem;
             font-weight: 300;
             letter-spacing: 0.06em;
@@ -687,19 +630,55 @@
             margin-top: 0.35rem;
         }
 
-        /* ============================================ QUOTE */
-        .quote {
+        /* ============================================ TESTIMONIALS CAROUSEL */
+        .testimonials {
             padding: clamp(6rem, 14vh, 12rem) 4.5vw;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
 
-        .quote__inner {
+        .testimonials__inner {
             max-width: 48rem;
             margin: 0 auto;
+            position: relative;
         }
 
-        .quote__mark {
+        .testimonials__eyebrow {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.6rem;
+            font-weight: 400;
+            letter-spacing: var(--tracking-widest);
+            text-transform: uppercase;
+            color: var(--color-sandstone);
+            margin-bottom: 2.5rem;
+        }
+
+        .testimonial-slide {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .testimonial-slide.active {
+            display: flex;
+        }
+
+        .testimonial-slide__stars {
+            display: flex;
+            gap: 0.3rem;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
+
+        .testimonial-slide__star {
+            color: var(--color-sandstone);
+            font-size: 1rem;
+        }
+
+        .testimonial-slide__mark {
             font-family: var(--font-display);
             font-size: 5rem;
             font-weight: 400;
@@ -709,17 +688,17 @@
             margin-bottom: 2rem;
         }
 
-        .quote__text {
+        .testimonial-slide__text {
             font-family: var(--font-display);
-            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+            font-size: clamp(1.3rem, 2.2vw, 1.9rem);
             font-weight: 400;
             font-style: italic;
-            line-height: 1.5;
+            line-height: 1.55;
             color: var(--color-chalk);
             margin-bottom: 2.5rem;
         }
 
-        .quote__rule {
+        .testimonial-slide__rule {
             width: 2.5rem;
             height: 1px;
             background: var(--color-sandstone);
@@ -727,7 +706,7 @@
             opacity: 0.4;
         }
 
-        .quote__author {
+        .testimonial-slide__author {
             display: block;
             font-family: var(--font-body);
             font-size: 0.65rem;
@@ -737,7 +716,7 @@
             color: var(--color-sandstone);
         }
 
-        .quote__location {
+        .testimonial-slide__location {
             display: block;
             font-family: var(--font-body);
             font-size: 0.62rem;
@@ -745,6 +724,54 @@
             letter-spacing: 0.05em;
             color: var(--color-ash);
             margin-top: 0.35rem;
+        }
+
+        .testimonials__nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .testimonials__arrow {
+            background: none;
+            border: 1px solid rgba(201, 169, 110, 0.25);
+            color: var(--color-chalk);
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .testimonials__arrow:hover {
+            border-color: var(--color-sandstone);
+            background: rgba(201, 169, 110, 0.06);
+        }
+
+        .testimonials__dots {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .testimonials__dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(201, 169, 110, 0.2);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            padding: 0;
+        }
+
+        .testimonials__dot.active {
+            background: var(--color-sandstone);
+            transform: scale(1.3);
         }
 
         /* ============================================ CTA */
@@ -779,12 +806,15 @@
             line-height: 1.75;
         }
 
-        .cta .estimator {
-            margin: 0 auto;
-            max-width: 34rem;
+        .cta__buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
         }
 
-        .cta__phone {
+        .cta__phone-line {
             display: block;
             margin-top: 1.5rem;
             font-family: var(--font-body);
@@ -794,13 +824,13 @@
             color: var(--color-ash);
         }
 
-        .cta__phone a {
+        .cta__phone-line a {
             color: var(--color-sandstone);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .cta__phone a:hover { color: var(--color-chalk); }
+        .cta__phone-line a:hover { color: var(--color-chalk); }
 
         /* ============================================ FOOTER */
         .footer {
@@ -831,6 +861,28 @@
             line-height: 1.7;
             color: var(--color-ash);
             max-width: 22rem;
+        }
+
+        .footer__social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .footer__social a {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            color: var(--color-limestone);
+            text-decoration: none;
+            opacity: 0.6;
+            transition: opacity 0.3s ease, color 0.3s ease;
+        }
+
+        .footer__social a:hover {
+            opacity: 1;
+            color: var(--color-sandstone);
         }
 
         .footer__col-title {
@@ -952,9 +1004,7 @@
             .hero__description { font-size: 0.88rem; }
             .hero__scroll { display: none; }
 
-            .estimator { flex-direction: column; max-width: 100%; }
-            .estimator__field { border-right: 1px solid rgba(90, 122, 98, 0.35); border-bottom: none; }
-            .estimator__btn { padding: 1rem; }
+            .hero__cta { flex-direction: column; align-items: flex-start; }
 
             .stats__inner { grid-template-columns: 1fr 1fr; }
 
@@ -1038,15 +1088,15 @@
 
     <nav class="nav" id="mainNav">
         <a href="#" class="nav__logo">
-            <span class="nav__wordmark">Stone <span class="nav__wordmark-amp">&amp;</span> Grove</span>
-            <span class="nav__descriptor">Landscape Architecture</span>
+            <span class="nav__wordmark">Visionary <span style="color:var(--color-sandstone);font-style:italic;font-weight:400">Landscaping</span></span>
+            <span class="nav__descriptor">Landscape Services</span>
         </a>
         <ul class="nav__right">
             <li class="nav__link-item"><a href="#services" class="nav__link">Services</a></li>
             <li class="nav__link-item"><a href="#portfolio" class="nav__link">Portfolio</a></li>
-            <li class="nav__link-item"><a href="#about" class="nav__link">Company</a></li>
-            <li class="nav__link-item"><a href="#contact" class="ghost-btn">Contact</a></li>
-            <li class="nav__link-item"><a href="tel:6479301110" class="nav__phone">647 930 1110</a></li>
+            <li class="nav__link-item"><a href="#testimonials" class="nav__link">Testimonials</a></li>
+            <li class="nav__link-item"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeV-b63GghEtppselBKi7bY9vYRWdeF1_mMRQ8TOhcxDLkmiQ/viewform" target="_blank" class="ghost-btn">Request a Quote</a></li>
+            <li class="nav__link-item"><a href="tel:6475752126" class="nav__phone">(647) 575-2126</a></li>
             <li>
                 <button class="nav__hamburger" id="menuToggle" aria-label="Open menu">
                     <span></span><span></span><span></span>
@@ -1059,17 +1109,17 @@
         <button class="mobile-menu__close" id="menuClose" aria-label="Close menu">&times;</button>
         <a href="#services" class="mobile-menu__link">Services</a>
         <a href="#portfolio" class="mobile-menu__link">Portfolio</a>
-        <a href="#about" class="mobile-menu__link">Company</a>
+        <a href="#testimonials" class="mobile-menu__link">Testimonials</a>
         <a href="#contact" class="mobile-menu__link">Contact</a>
-        <a href="tel:6479301110" class="mobile-menu__phone">647 930 1110</a>
+        <a href="tel:6475752126" class="mobile-menu__phone">(647) 575-2126</a>
     </div>
 
     <!-- ==================== HERO ==================== -->
     <section class="hero">
         <div class="hero__media">
             <img class="hero__img"
-                 src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80"
-                 alt="Luxury outdoor architecture at evening"
+                 src="./hero.png"
+                 alt="Beautiful residential landscaping by Visionary Landscaping"
                  loading="eager">
         </div>
         <div class="hero__overlay"></div>
@@ -1077,22 +1127,18 @@
 
         <div class="hero__content">
             <div class="hero__rule"></div>
-            <span class="hero__eyebrow">L U X U R Y &ensp; O U T D O O R &ensp; S P A C E S</span>
-            <h1 class="hero__title">Leave A Lasting<br>Impression</h1>
+            <span class="hero__eyebrow">T H O R N H I L L &ensp; &bull; &ensp; G R E A T E R &ensp; T O R O N T O &ensp; A R E A</span>
+            <h1 class="hero__title">One Dream.<br>Satisfied Clients.</h1>
             <p class="hero__description">
-                We design and build timeless outdoor environments&thinsp;&mdash;&thinsp;from grand poolside retreats
-                to intimate garden sanctuaries&thinsp;&mdash;&thinsp;where architecture meets the living landscape.
+                Visionary Landscape Services has been providing quality landscaping to residential and commercial
+                clients since 2014. Located in Thornhill, servicing the greater Toronto area&thinsp;&mdash;&thinsp;our
+                vision is to change the scenery of Ontario for the green-er good.
             </p>
-            <div class="estimator">
-                <div class="estimator__field">
-                    <input class="estimator__input" type="text"
-                           placeholder="Enter your property address..."
-                           aria-label="Property address for project estimate">
-                    <div class="estimator__accent"></div>
-                </div>
-                <button class="estimator__btn">Get Your Estimate</button>
+            <div class="hero__cta">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeV-b63GghEtppselBKi7bY9vYRWdeF1_mMRQ8TOhcxDLkmiQ/viewform" target="_blank" class="btn-primary">Request a Quote</a>
+                <a href="tel:6475752126" class="ghost-btn">Call (647) 575-2126</a>
             </div>
-            <span class="estimator__label">Complimentary consultation &middot; No commitment required</span>
+            <span class="hero__cta-label">Free estimates &middot; Residential &amp; Commercial</span>
         </div>
 
         <div class="hero__scroll">
@@ -1105,20 +1151,20 @@
     <section class="stats">
         <div class="stats__inner">
             <div class="stat reveal" style="--d:0">
-                <span class="stat__number">22</span>
-                <span class="stat__label">Years of Excellence</span>
+                <span class="stat__number">12+</span>
+                <span class="stat__label">Years in Business</span>
             </div>
             <div class="stat reveal" style="--d:1">
-                <span class="stat__number">500+</span>
-                <span class="stat__label">Projects Delivered</span>
+                <span class="stat__number">10+</span>
+                <span class="stat__label">Services Offered</span>
             </div>
             <div class="stat reveal" style="--d:2">
-                <span class="stat__number">14</span>
-                <span class="stat__label">Design Awards</span>
+                <span class="stat__number">GTA</span>
+                <span class="stat__label">Wide Coverage</span>
             </div>
             <div class="stat reveal" style="--d:3">
-                <span class="stat__number">$180M+</span>
-                <span class="stat__label">Portfolio Value</span>
+                <span class="stat__number">Res &amp; Com</span>
+                <span class="stat__label">Clients Served</span>
             </div>
         </div>
     </section>
@@ -1127,53 +1173,67 @@
     <section class="services" id="services">
         <div class="services__inner">
             <div class="services__header reveal">
-                <span class="section-eyebrow">What We Create</span>
-                <h2 class="section-heading">Crafting Outdoor<br>Masterworks</h2>
+                <span class="section-eyebrow">What We Offer</span>
+                <h2 class="section-heading">Our Professional<br>Services</h2>
             </div>
             <div class="services__grid">
                 <div class="services__col">
                     <div class="service-item reveal" style="--d:0">
                         <span class="service-item__number">01</span>
                         <div>
-                            <h3 class="service-item__title">Landscape Design &amp; Build</h3>
-                            <p class="service-item__desc">Full-service landscape architecture from initial concept through final planting. We integrate terrain, light, and living elements into cohesive outdoor narratives.</p>
+                            <h3 class="service-item__title">Interlock</h3>
+                            <p class="service-item__desc">Expert interlock installation for driveways, walkways, and patios. Precision-laid pavers that deliver lasting beauty and durability to your property.</p>
                         </div>
                     </div>
                     <div class="service-item reveal" style="--d:1">
                         <span class="service-item__number">02</span>
                         <div>
-                            <h3 class="service-item__title">Hardscaping</h3>
-                            <p class="service-item__desc">Custom stonework, retaining walls, and premium natural pavers laid with precision. Every surface is engineered for permanence and grace.</p>
+                            <h3 class="service-item__title">Landscaping</h3>
+                            <p class="service-item__desc">Full-service landscape design and maintenance for residential and commercial properties. From sod and gardens to complete yard transformations.</p>
                         </div>
                     </div>
                     <div class="service-item reveal" style="--d:2">
                         <span class="service-item__number">03</span>
                         <div>
-                            <h3 class="service-item__title">Softscaping</h3>
-                            <p class="service-item__desc">Curated planting designs that evolve with the seasons, creating living architecture that breathes movement and color into your grounds.</p>
+                            <h3 class="service-item__title">Snow Removal</h3>
+                            <p class="service-item__desc">Reliable winter snow removal services to keep your property safe and accessible throughout the harsh Ontario winter months.</p>
+                        </div>
+                    </div>
+                    <div class="service-item reveal" style="--d:3">
+                        <span class="service-item__number">04</span>
+                        <div>
+                            <h3 class="service-item__title">Parging</h3>
+                            <p class="service-item__desc">Professional parging and foundation coating to protect your home&rsquo;s exterior. Clean finishes that improve curb appeal and prevent moisture damage.</p>
                         </div>
                     </div>
                 </div>
                 <div class="services__col">
                     <div class="service-item reveal" style="--d:1">
-                        <span class="service-item__number">04</span>
+                        <span class="service-item__number">05</span>
                         <div>
-                            <h3 class="service-item__title">Outdoor Kitchens &amp; Living</h3>
-                            <p class="service-item__desc">Fully appointed outdoor kitchens, dining pavilions, and lounge areas designed for year-round entertaining at the highest standard.</p>
+                            <h3 class="service-item__title">Decks</h3>
+                            <p class="service-item__desc">Custom deck design and construction tailored to your outdoor living needs. Quality materials and craftsmanship for a space you&rsquo;ll love year-round.</p>
                         </div>
                     </div>
                     <div class="service-item reveal" style="--d:2">
-                        <span class="service-item__number">05</span>
+                        <span class="service-item__number">06</span>
                         <div>
-                            <h3 class="service-item__title">Water Features &amp; Pools</h3>
-                            <p class="service-item__desc">From infinity-edge pools to naturalized waterfalls, we create aquatic environments that anchor your landscape with serenity and spectacle.</p>
+                            <h3 class="service-item__title">Excavation</h3>
+                            <p class="service-item__desc">Professional excavation services for grading, trenching, and site preparation. Equipped to handle projects of any scale with precision.</p>
                         </div>
                     </div>
                     <div class="service-item reveal" style="--d:3">
-                        <span class="service-item__number">06</span>
+                        <span class="service-item__number">07</span>
                         <div>
-                            <h3 class="service-item__title">Architectural Lighting</h3>
-                            <p class="service-item__desc">Sculptural lighting systems that transform your property after dark&thinsp;&mdash;&thinsp;revealing textures, defining pathways, and extending the hours of outdoor living.</p>
+                            <h3 class="service-item__title">Renovations</h3>
+                            <p class="service-item__desc">Outdoor and exterior renovation services to refresh and modernize your property. From retaining walls to complete backyard overhauls.</p>
+                        </div>
+                    </div>
+                    <div class="service-item reveal" style="--d:4">
+                        <span class="service-item__number">08</span>
+                        <div>
+                            <h3 class="service-item__title">Fencing</h3>
+                            <p class="service-item__desc">Quality fence installation for privacy, security, and style. A range of materials and designs to complement your property and meet your needs.</p>
                         </div>
                     </div>
                 </div>
@@ -1186,86 +1246,131 @@
         <div class="portfolio__inner">
             <div class="portfolio__header">
                 <div class="reveal">
-                    <span class="section-eyebrow">Timeless Designs</span>
-                    <h2 class="section-heading">Our Portfolio</h2>
+                    <span class="section-eyebrow">Our Work</span>
+                    <h2 class="section-heading">Completed Projects</h2>
                 </div>
-                <a href="#" class="ghost-btn reveal" style="--d:1">View All Projects</a>
+                <a href="https://www.instagram.com/visionary.landscape/" target="_blank" class="ghost-btn reveal" style="--d:1">View More on Instagram</a>
             </div>
             <div class="portfolio__grid">
                 <div class="portfolio-item reveal" style="--d:0">
+                    <!-- ========== IMAGE SWAP: Replace src with a Visionary Landscaping interlock/driveway project photo ========== -->
                     <img class="portfolio-item__img"
                          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-                         alt="The Glengrove Estate"
+                         alt="Interlock driveway project by Visionary Landscaping"
                          loading="lazy">
                     <div class="portfolio-item__overlay">
                         <span class="portfolio-item__number">01</span>
-                        <h3 class="portfolio-item__name">The Glengrove Estate</h3>
-                        <span class="portfolio-item__category">Pool &amp; Terrace Design</span>
+                        <h3 class="portfolio-item__name">Interlock Driveway</h3>
+                        <span class="portfolio-item__category">Residential &mdash; Thornhill</span>
                     </div>
                 </div>
                 <div class="portfolio-item reveal" style="--d:1">
+                    <!-- ========== IMAGE SWAP: Replace src with a Visionary Landscaping walkway/patio project photo ========== -->
                     <img class="portfolio-item__img"
-                         src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=800&q=80"
-                         alt="Ravine's Edge"
+                         src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
+                         alt="Walkway and patio project by Visionary Landscaping"
                          loading="lazy">
                     <div class="portfolio-item__overlay">
                         <span class="portfolio-item__number">02</span>
-                        <h3 class="portfolio-item__name">Ravine&rsquo;s Edge</h3>
-                        <span class="portfolio-item__category">Naturalized Landscape</span>
+                        <h3 class="portfolio-item__name">Patio &amp; Walkway</h3>
+                        <span class="portfolio-item__category">Residential &mdash; Markham</span>
                     </div>
                 </div>
                 <div class="portfolio-item reveal" style="--d:2">
+                    <!-- ========== IMAGE SWAP: Replace src with a Visionary Landscaping landscaping/garden project photo ========== -->
                     <img class="portfolio-item__img"
                          src="https://images.unsplash.com/photo-1584738766473-61c083514bf4?auto=format&fit=crop&w=800&q=80"
-                         alt="The Harrison Retreat"
+                         alt="Backyard landscaping project by Visionary Landscaping"
                          loading="lazy">
                     <div class="portfolio-item__overlay">
                         <span class="portfolio-item__number">03</span>
-                        <h3 class="portfolio-item__name">The Harrison Retreat</h3>
-                        <span class="portfolio-item__category">Outdoor Living &amp; Kitchen</span>
+                        <h3 class="portfolio-item__name">Backyard Transformation</h3>
+                        <span class="portfolio-item__category">Residential &mdash; Oshawa</span>
                     </div>
                 </div>
                 <div class="portfolio-item reveal" style="--d:3">
+                    <!-- ========== IMAGE SWAP: Replace src with a Visionary Landscaping deck or fencing project photo ========== -->
                     <img class="portfolio-item__img"
-                         src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
-                         alt="Lakeside Modern"
+                         src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80"
+                         alt="Deck and fencing project by Visionary Landscaping"
                          loading="lazy">
                     <div class="portfolio-item__overlay">
                         <span class="portfolio-item__number">04</span>
-                        <h3 class="portfolio-item__name">Lakeside Modern</h3>
-                        <span class="portfolio-item__category">Complete Grounds &amp; Lighting</span>
+                        <h3 class="portfolio-item__name">Custom Deck Build</h3>
+                        <span class="portfolio-item__category">Residential &mdash; GTA</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== TESTIMONIAL ==================== -->
-    <section class="quote" id="about">
-        <div class="quote__inner reveal">
-            <div class="quote__mark">&ldquo;</div>
-            <p class="quote__text">They transformed our property into something we never imagined possible. Every stone, every plant, every light was placed with intention and artistry.</p>
-            <div class="quote__rule"></div>
-            <span class="quote__author">Catherine &amp; James H.</span>
-            <span class="quote__location">Forest Hill, Toronto</span>
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials__inner reveal">
+            <span class="testimonials__eyebrow">What Our Clients Say</span>
+
+            <div class="testimonial-slide active" data-slide="0">
+                <div class="testimonial-slide__stars">
+                    <span class="testimonial-slide__star">&#9733;</span>
+                    <span class="testimonial-slide__star">&#9733;</span>
+                    <span class="testimonial-slide__star">&#9733;</span>
+                    <span class="testimonial-slide__star">&#9733;</span>
+                    <span class="testimonial-slide__star">&#9733;</span>
+                </div>
+                <div class="testimonial-slide__mark">&ldquo;</div>
+                <p class="testimonial-slide__text">Absolutely thrilled with the new driveway! Stan&rsquo;s team was professional, punctual, and meticulous from start to finish. They walked me through every step, offered suggestions I never would&rsquo;ve thought of, and delivered a result that completely transformed the front of my home. The craftsmanship is flawless, and the cleanup was spotless. I&rsquo;ve already had three neighbours ask who did the work!</p>
+                <div class="testimonial-slide__rule"></div>
+                <span class="testimonial-slide__author">Melissa Johnston</span>
+                <span class="testimonial-slide__location">Markham, ON</span>
+            </div>
+
+            <div class="testimonial-slide" data-slide="1">
+                <div class="testimonial-slide__mark">&ldquo;</div>
+                <p class="testimonial-slide__text">Stan and his team did an outstanding job on our walkways. Everything looks fantastic!</p>
+                <div class="testimonial-slide__rule"></div>
+                <span class="testimonial-slide__author">Amelia Barker</span>
+                <span class="testimonial-slide__location">Thornhill, ON</span>
+            </div>
+
+            <div class="testimonial-slide" data-slide="2">
+                <div class="testimonial-slide__mark">&ldquo;</div>
+                <p class="testimonial-slide__text">Extremely pleased with the new patio! The crew was skilled, efficient, and friendly.</p>
+                <div class="testimonial-slide__rule"></div>
+                <span class="testimonial-slide__author">Naomi Reynolds</span>
+                <span class="testimonial-slide__location">Oshawa, ON</span>
+            </div>
+
+            <div class="testimonial-slide" data-slide="3">
+                <div class="testimonial-slide__mark">&ldquo;</div>
+                <p class="testimonial-slide__text">Stan and his team did an outstanding job on our driveway. They were highly professional and thorough.</p>
+                <div class="testimonial-slide__rule"></div>
+                <span class="testimonial-slide__author">Felix Castillo</span>
+                <span class="testimonial-slide__location">Greater Toronto Area</span>
+            </div>
+
+            <div class="testimonials__nav">
+                <button class="testimonials__arrow" id="testimonialPrev" aria-label="Previous testimonial">&#8592;</button>
+                <div class="testimonials__dots">
+                    <button class="testimonials__dot active" data-dot="0" aria-label="Testimonial 1"></button>
+                    <button class="testimonials__dot" data-dot="1" aria-label="Testimonial 2"></button>
+                    <button class="testimonials__dot" data-dot="2" aria-label="Testimonial 3"></button>
+                    <button class="testimonials__dot" data-dot="3" aria-label="Testimonial 4"></button>
+                </div>
+                <button class="testimonials__arrow" id="testimonialNext" aria-label="Next testimonial">&#8594;</button>
+            </div>
         </div>
     </section>
 
     <!-- ==================== CTA ==================== -->
     <section class="cta" id="contact">
         <div class="cta__inner reveal">
-            <h2 class="cta__heading">Begin Your<br>Transformation</h2>
-            <p class="cta__desc">Schedule a private design consultation with our team. We&rsquo;ll visit your property and craft a vision unique to your landscape.</p>
-            <div class="estimator estimator--static">
-                <div class="estimator__field">
-                    <input class="estimator__input" type="text"
-                           placeholder="Enter your property address..."
-                           aria-label="Property address for consultation">
-                    <div class="estimator__accent"></div>
-                </div>
-                <button class="estimator__btn">Schedule Consultation</button>
+            <h2 class="cta__heading">Ready to Transform<br>Your Property?</h2>
+            <p class="cta__desc">Request a free quote and one of our specialists will contact you shortly to discuss the details of your project.</p>
+            <div class="cta__buttons">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeV-b63GghEtppselBKi7bY9vYRWdeF1_mMRQ8TOhcxDLkmiQ/viewform" target="_blank" class="btn-primary">Request a Quote</a>
+                <a href="tel:6475752126" class="ghost-btn">Call Us Directly</a>
             </div>
-            <span class="cta__phone">Or call us directly&thinsp;&mdash;&thinsp;<a href="tel:6479301110">647 930 1110</a></span>
+            <span class="cta__phone-line">Or give us a call or text&thinsp;&mdash;&thinsp;<a href="tel:6475752126">(647) 575-2126</a></span>
         </div>
     </section>
 
@@ -1273,42 +1378,45 @@
     <footer class="footer">
         <div class="footer__inner">
             <div>
-                <div class="footer__brand-name">Stone <span style="color:var(--color-sandstone);font-style:italic;font-weight:400">&amp;</span> Grove</div>
-                <p class="footer__brand-desc">Crafting timeless outdoor environments across the Greater Toronto Area since 2003.</p>
+                <div class="footer__brand-name">Visionary <span style="color:var(--color-sandstone);font-style:italic;font-weight:400">Landscaping</span></div>
+                <p class="footer__brand-desc">Providing quality landscaping and property maintenance services to the Greater Toronto Area since 2014.</p>
+                <div class="footer__social">
+                    <a href="https://www.instagram.com/visionary.landscape/" target="_blank">Instagram</a>
+                </div>
             </div>
             <div class="footer__col">
                 <h4 class="footer__col-title">Sitemap</h4>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer__col">
                 <h4 class="footer__col-title">Services</h4>
                 <ul>
-                    <li><a href="#">Design &amp; Build</a></li>
-                    <li><a href="#">Hardscaping</a></li>
-                    <li><a href="#">Softscaping</a></li>
-                    <li><a href="#">Outdoor Kitchens</a></li>
-                    <li><a href="#">Water Features</a></li>
-                    <li><a href="#">Lighting</a></li>
+                    <li><a href="#services">Interlock</a></li>
+                    <li><a href="#services">Landscaping</a></li>
+                    <li><a href="#services">Snow Removal</a></li>
+                    <li><a href="#services">Decks</a></li>
+                    <li><a href="#services">Fencing</a></li>
+                    <li><a href="#services">Excavation</a></li>
                 </ul>
             </div>
             <div class="footer__col">
                 <h4 class="footer__col-title">Contact</h4>
                 <ul>
-                    <li><a href="tel:6479301110">647 930 1110</a></li>
-                    <li><a href="mailto:info@stoneandgrove.ca">info@stoneandgrove.ca</a></li>
-                    <li class="footer__contact-item">Toronto, Ontario</li>
+                    <li><a href="tel:6475752126">(647) 575-2126</a></li>
+                    <li><a href="mailto:info@visionarylandscape.ca">info@visionarylandscape.ca</a></li>
+                    <li class="footer__contact-item">Thornhill, Ontario</li>
+                    <li class="footer__contact-item">Serving the Greater Toronto Area</li>
                 </ul>
             </div>
         </div>
         <div class="footer__bottom">
-            <span class="footer__copyright">&copy; 2026 Stone &amp; Grove. All rights reserved.</span>
+            <span class="footer__copyright">&copy; 2026 Visionary Landscaping. All rights reserved.</span>
             <div class="footer__legal">
                 <a href="#">Privacy</a>
                 <a href="#">Terms</a>
@@ -1359,6 +1467,38 @@
             }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
             reveals.forEach(function (el) { observer.observe(el); });
+
+            /* Testimonials carousel */
+            var currentSlide = 0;
+            var slides = document.querySelectorAll('.testimonial-slide');
+            var dots = document.querySelectorAll('.testimonials__dot');
+            var totalSlides = slides.length;
+
+            function goToSlide(n) {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+                currentSlide = (n + totalSlides) % totalSlides;
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+
+            document.getElementById('testimonialNext').addEventListener('click', function () {
+                goToSlide(currentSlide + 1);
+            });
+
+            document.getElementById('testimonialPrev').addEventListener('click', function () {
+                goToSlide(currentSlide - 1);
+            });
+
+            dots.forEach(function (dot) {
+                dot.addEventListener('click', function () {
+                    goToSlide(parseInt(this.getAttribute('data-dot')));
+                });
+            });
+
+            setInterval(function () {
+                goToSlide(currentSlide + 1);
+            }, 7000);
         })();
     </script>
 </body>
