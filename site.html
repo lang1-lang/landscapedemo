@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stone &amp; Grove — Luxury Landscape Architecture</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Libre+Franklin:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        :root {
+            --color-canopy:        #0e1f14;
+            --color-forest:        #1a2e1f;
+            --color-moss:          #2a4a33;
+            --color-sage:          #5a7a62;
+
+            --color-sandstone:     #c9a96e;
+            --color-sandstone-dim: rgba(201, 169, 110, 0.55);
+            --color-limestone:     #e8dcc8;
+            --color-chalk:         #f5f0e8;
+
+            --color-slate:         #2c2f33;
+            --color-graphite:      #3d4043;
+            --color-ash:           #8a8d91;
+
+            --color-overlay:       rgba(10, 18, 12, 0.55);
+            --color-overlay-deep:  rgba(10, 18, 12, 0.82);
+
+            --font-display: 'Cormorant Garamond', 'Georgia', serif;
+            --font-body:    'Libre Franklin', 'Helvetica Neue', sans-serif;
+
+            --tracking-wide:    0.22em;
+            --tracking-wider:   0.35em;
+            --tracking-widest:  0.48em;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-weight: 300;
+            color: var(--color-limestone);
+            background: var(--color-canopy);
+            line-height: 1.6;
+            letter-spacing: 0.015em;
+            overflow-x: hidden;
+        }
+
+        /* ============================================ NAVIGATION */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 4.5vw;
+            height: 4.5rem;
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            transition: background 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                        border-color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .nav--solid {
+            background: rgba(14, 31, 20, 0.97);
+            border-bottom-color: rgba(201, 169, 110, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .nav__logo {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--color-chalk);
+        }
+
+        .nav__wordmark {
+            font-family: var(--font-display);
+            font-size: 1.55rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
+        }
+
+        .nav__wordmark-amp {
+            color: var(--color-sandstone);
+            font-style: italic;
+            font-weight: 400;
+            margin: 0 0.1em;
+        }
+
+        .nav__descriptor {
+            font-family: var(--font-body);
+            font-size: 0.55rem;
+            font-weight: 300;
+            letter-spacing: var(--tracking-widest);
+            text-transform: uppercase;
+            color: var(--color-sandstone-dim);
+        }
+
+        .nav__right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav__link {
+            font-family: var(--font-body);
+            font-size: 0.68rem;
+            font-weight: 400;
+            letter-spacing: var(--tracking-wide);
+            text-transform: uppercase;
+            color: var(--color-limestone);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav__link:hover { opacity: 1; }
+
+        .ghost-btn {
+            font-family: var(--font-body);
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: var(--tracking-wide);
+            text-transform: uppercase;
+            color: var(--color-chalk);
+            text-decoration: none;
+            padding: 0.55rem 1.4rem;
+            border: 1px solid rgba(201, 169, 110, 0.35);
+            transition: border-color 0.3s ease, background 0.3s ease;
+            display: inline-block;
+        }
+
+        .ghost-btn:hover {
+            border-color: var(--color-sandstone);
+            background: rgba(201, 169, 110, 0.06);
+        }
+
+        .nav__phone {
+            font-family: var(--font-body);
+            font-size: 0.62rem;
+            font-weight: 400;
+            letter-spacing: var(--tracking-wide);
+            color: var(--color-chalk);
+            text-decoration: none;
+            padding: 0.55rem 1.1rem;
+            border: 1px solid rgba(245, 240, 232, 0.15);
+            white-space: nowrap;
+            transition: border-color 0.3s ease;
+        }
+
+        .nav__phone:hover { border-color: rgba(245, 240, 232, 0.45); }
+
+        .nav__hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 28px;
+            height: 28px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .nav__hamburger span {
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: var(--color-chalk);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* ============================================ HERO */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+
+        .hero__media {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero__img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 35%;
+            animation: kenBurns 28s cubic-bezier(0.25, 0.1, 0.25, 1) infinite alternate;
+            will-change: transform;
+        }
+
+        @keyframes kenBurns {
+            0%   { transform: scale(1); }
+            100% { transform: scale(1.07) translate(-0.5%, -0.8%); }
+        }
+
+        .hero__overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background:
+                linear-gradient(180deg,
+                    rgba(10, 18, 12, 0.35) 0%,
+                    rgba(10, 18, 12, 0.05) 22%,
+                    rgba(10, 18, 12, 0.3) 50%,
+                    rgba(10, 18, 12, 0.75) 72%,
+                    rgba(10, 18, 12, 0.92) 100%
+                ),
+                linear-gradient(90deg,
+                    rgba(10, 18, 12, 0.6) 0%,
+                    rgba(10, 18, 12, 0.25) 35%,
+                    transparent 60%
+                );
+        }
+
+        .hero__grain {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            opacity: 0.025;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 200px 200px;
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 3;
+            padding: 0 4.5vw;
+            padding-bottom: clamp(5rem, 10vh, 9rem);
+            max-width: 54rem;
+        }
+
+        .hero__rule {
+            width: 3.5rem;
+            height: 1px;
+            background: linear-gradient(90deg, var(--color-sandstone), transparent);
+            margin-bottom: 1.25rem;
+            opacity: 0;
+            animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+        }
+
+        .hero__eyebrow {
+            display: block;
+            font-family: var(--font-body);
+            font-size: clamp(0.58rem, 0.65vw, 0.72rem);
+            font-weight: 400;
+            letter-spacing: var(--tracking-widest);
+            text-transform: uppercase;
+            color: var(--color-sandstone);
+            margin-bottom: 1.25rem;
+            opacity: 0;
+            animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+        }
+
+        .hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(3.2rem, 5.8vw, 7rem);
+            font-weight: 600;
+            line-height: 1.02;
+            color: var(--color-chalk);
+            letter-spacing: -0.015em;
+            margin-bottom: 1.75rem;
+            opacity: 0;
+            animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards;
+        }
+
+        .hero__description {
+            font-family: var(--font-body);
+            font-size: clamp(0.88rem, 1vw, 1.05rem);
+            font-weight: 300;
+            line-height: 1.75;
+            color: var(--color-limestone);
+            max-width: 35rem;
+            margin-bottom: 2.75rem;
+            opacity: 0;
+            animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.8s forwards;
+        }
+
+        /* ============================================ ESTIMATOR */
+        .estimator {
+            display: flex;
+            align-items: stretch;
+            max-width: 38rem;
+            opacity: 0;
+            animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 1.05s forwards;
+        }
+
+        .estimator--static {
+            opacity: 1;
+            animation: none;
+        }
+
+        .estimator__field {
+            flex: 1;
+            position: relative;
+            background: rgba(245, 240, 232, 0.04);
+            border: 1px solid rgba(90, 122, 98, 0.35);
+            border-right: none;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .estimator__field:focus-within {
+            border-color: rgba(201, 169, 110, 0.5);
+            background: rgba(245, 240, 232, 0.07);
+        }
+
+        .estimator__input {
+            display: block;
+            width: 100%;
+            padding: 1.05rem 1.4rem;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 300;
+            letter-spacing: 0.03em;
+            color: var(--color-chalk);
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+
+        .estimator__input::placeholder {
+            color: var(--color-ash);
+            font-weight: 300;
+        }
+
+        .estimator__accent {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, var(--color-sandstone), var(--color-moss));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .estimator__field:focus-within .estimator__accent {
+            transform: scaleX(1);
+        }
+
+        .estimator__btn {
+            font-family: var(--font-body);
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: var(--tracking-wide);
+            text-transform: uppercase;
+            color: var(--color-chalk);
+            background: var(--color-moss);
+            border: 1px solid var(--color-moss);
+            padding: 1.05rem 2.2rem;
+            cursor: pointer;
+            transition: background 0.35s ease, border-color 0.35s ease;
+            white-space: nowrap;
+        }
+
+        .estimator__btn:hover {
+            background: #336b42;
+            border-color: #336b42;
+        }
+
+        .estimator__label {
+            display: block;
+            margin-top: 0.75rem;
+            font-size: 0.62rem;
+            font-weight: 300;
+            letter-spacing: 0.06em;
+            color: var(--color-ash);
+            opacity: 0;
+            animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.4s forwards;
+        }
+
+        /* ============================================ SCROLL INDICATOR */
+        .hero__scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            right: 4.5vw;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            opacity: 0;
+            animation: fadeIn 1.2s ease 2s forwards;
+        }
+
+        .hero__scroll-label {
+            font-family: var(--font-body);
+            font-size: 0.5rem;
+            font-weight: 400;
+            letter-spacing: var(--tracking-widest);
+            text-transform: uppercase;
+            color: var(--color-ash);
+            writing-mode: vertical-rl;
+        }
+
+        .hero__scroll-bar {
+            width: 1px;
+            height: 2.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero__scroll-bar::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(201, 169, 110, 0.2);
+        }
+
+        .hero__scroll-bar::after {
+            content: '';
+            position: absolute;
+            top: -100%; left: 0;
+            width: 100%; height: 100%;
+            background: var(--color-sandstone);
+            animation: scrollTick 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+        }
+
+        @keyframes scrollTick {
+            0%   { top: -100%; }
+            40%  { top: 0; }
+            80%  { top: 100%; }
+            100% { top: 100%; }
+        }
+
+        /* ============================================ STATS */
+        .stats {
+            padding: clamp(3.5rem, 7vh, 5.5rem) 4.5vw;
+            background: var(--color-forest);
+            border-top: 1px solid rgba(201, 169, 110, 0.08);
+            border-bottom: 1px solid rgba(201, 169, 110, 0.08);
+        }
+
+        .stats__inner {
+            max-width: 72rem;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            position: relative;
+        }
+
+        .stat::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 50%;
+            background: rgba(201, 169, 110, 0.15);
+        }
+
+        .stat:last-child::after { display: none; }
+
+        .stat__number {
+            display: block;
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--color-sandstone);
+        }
+
+        .stat__label {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.62rem;
+            font-weight: 400;
+            letter-spacing: var(--tracking-wider);
+            text-transform: uppercase;
+            color: var(--color-ash);
+            margin-top: 0.5rem;
+        }
+
+        /* ============================================ SECTION SHARED */
+        .section-eyebrow {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.6rem;
+            font-weight: 400;
+            letter-spacing: var(--tracking-widest);
+            text-transform: uppercase;
+            color: var(--color-sandstone);
+            margin-bottom: 1rem;
+        }
+
+        .section-heading {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 4vw, 4rem);
+            font-weight: 600;
+            line-height: 1.05;
+            color: var(--color-chalk);
+            letter-spacing: -0.01em;
+        }
+
+        /* ============================================ SERVICES */
+        .services {
+            padding: clamp(6rem, 12vh, 10rem) 4.5vw;
+            position: relative;
+        }
+
+        .services__inner {
+            max-width: 72rem;
+            margin: 0 auto;
+        }
+
+        .services__header {
+            margin-bottom: clamp(3rem, 6vh, 5rem);
+        }
+
+        .services__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 clamp(3rem, 5vw, 5rem);
+        }
+
+        .services__col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .services__col:last-child {
+            padding-top: 3rem;
+        }
+
+        .service-item {
+            padding: 2.25rem 0;
+            border-top: 1px solid rgba(201, 169, 110, 0.1);
+            display: grid;
+            grid-template-columns: 2.5rem 1fr;
+            gap: 1.25rem;
+            align-items: start;
+        }
+
+        .service-item:last-child {
+            border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+        }
+
+        .service-item__number {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--color-sandstone-dim);
+            font-style: italic;
+            padding-top: 0.15rem;
+        }
+
+        .service-item__title {
+            font-family: var(--font-body);
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: var(--tracking-wide);
+            text-transform: uppercase;
+            color: var(--color-chalk);
+            margin-bottom: 0.65rem;
+        }
+
+        .service-item__desc {
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 300;
+            line-height: 1.75;
+            color: var(--color-ash);
+        }
+
+        /* ============================================ PORTFOLIO */
+        .portfolio {
+            padding: clamp(6rem, 12vh, 10rem) 4.5vw;
+            background: var(--color-forest);
+            position: relative;
+            border-top: 1px solid rgba(201, 169, 110, 0.08);
+        }
+
+        .portfolio__inner {
+            max-width: 72rem;
+            margin: 0 auto;
+        }
+
+        .portfolio__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: clamp(3rem, 6vh, 5rem);
+        }
+
+        .portfolio__grid {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-item:nth-child(even) {
+            margin-top: 4rem;
+        }
+
+        .portfolio-item__img {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .portfolio-item:nth-child(even) .portfolio-item__img {
+            aspect-ratio: 4 / 3;
+        }
+
+        .portfolio-item:hover .portfolio-item__img {
+            transform: scale(1.04);
+        }
+
+        .portfolio-item__overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(10, 18, 12, 0.88), transparent);
+        }
+
+        .portfolio-item__number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: rgba(201, 169, 110, 0.35);
+            line-height: 1;
+        }
+
+        .portfolio-item__name {
+            font-family: var(--font-body);
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: var(--tracking-wide);
+            text-transform: uppercase;
+            color: var(--color-chalk);
+            margin-top: 0.5rem;
+        }
+
+        .portfolio-item__category {
+            font-family: var(--font-body);
+            font-size: 0.62rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            color: var(--color-sandstone-dim);
+            margin-top: 0.35rem;
+        }
+
+        /* ============================================ QUOTE */
+        .quote {
+            padding: clamp(6rem, 14vh, 12rem) 4.5vw;
+            text-align: center;
+            position: relative;
+        }
+
+        .quote__inner {
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .quote__mark {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            font-weight: 400;
+            color: var(--color-sandstone);
+            opacity: 0.3;
+            line-height: 0.6;
+            margin-bottom: 2rem;
+        }
+
+        .quote__text {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.5;
+            color: var(--color-chalk);
+            margin-bottom: 2.5rem;
+        }
+
+        .quote__rule {
+            width: 2.5rem;
+            height: 1px;
+            background: var(--color-sandstone);
+            margin: 0 auto 1.5rem;
+            opacity: 0.4;
+        }
+
+        .quote__author {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: var(--tracking-wide);
+            text-transform: uppercase;
+            color: var(--color-sandstone);
+        }
+
+        .quote__location {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.62rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            color: var(--color-ash);
+            margin-top: 0.35rem;
+        }
+
+        /* ============================================ CTA */
+        .cta {
+            padding: clamp(6rem, 12vh, 10rem) 4.5vw;
+            background: var(--color-forest);
+            text-align: center;
+            position: relative;
+            border-top: 1px solid rgba(201, 169, 110, 0.08);
+        }
+
+        .cta__inner {
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        .cta__heading {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 3.5vw, 3.5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--color-chalk);
+            margin-bottom: 1rem;
+        }
+
+        .cta__desc {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--color-ash);
+            margin-bottom: 2.5rem;
+            line-height: 1.75;
+        }
+
+        .cta .estimator {
+            margin: 0 auto;
+            max-width: 34rem;
+        }
+
+        .cta__phone {
+            display: block;
+            margin-top: 1.5rem;
+            font-family: var(--font-body);
+            font-size: 0.62rem;
+            font-weight: 300;
+            letter-spacing: var(--tracking-wide);
+            color: var(--color-ash);
+        }
+
+        .cta__phone a {
+            color: var(--color-sandstone);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .cta__phone a:hover { color: var(--color-chalk); }
+
+        /* ============================================ FOOTER */
+        .footer {
+            padding: clamp(4rem, 8vh, 6rem) 4.5vw;
+            border-top: 1px solid rgba(201, 169, 110, 0.08);
+        }
+
+        .footer__inner {
+            max-width: 72rem;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: clamp(2rem, 4vw, 4rem);
+        }
+
+        .footer__brand-name {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--color-chalk);
+            margin-bottom: 0.75rem;
+        }
+
+        .footer__brand-desc {
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--color-ash);
+            max-width: 22rem;
+        }
+
+        .footer__col-title {
+            font-family: var(--font-body);
+            font-size: 0.58rem;
+            font-weight: 500;
+            letter-spacing: var(--tracking-wider);
+            text-transform: uppercase;
+            color: var(--color-sandstone);
+            margin-bottom: 1.2rem;
+        }
+
+        .footer__col ul { list-style: none; }
+
+        .footer__col li { margin-bottom: 0.6rem; }
+
+        .footer__col a {
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 300;
+            color: var(--color-limestone);
+            text-decoration: none;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer__col a:hover { opacity: 1; }
+
+        .footer__col .footer__contact-item {
+            font-size: 0.82rem;
+            font-weight: 300;
+            color: var(--color-ash);
+        }
+
+        .footer__bottom {
+            max-width: 72rem;
+            margin: 3rem auto 0;
+            padding: 2rem 4.5vw 0;
+            border-top: 1px solid rgba(201, 169, 110, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer__copyright {
+            font-family: var(--font-body);
+            font-size: 0.68rem;
+            font-weight: 300;
+            color: var(--color-ash);
+        }
+
+        .footer__legal {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer__legal a {
+            font-family: var(--font-body);
+            font-size: 0.68rem;
+            font-weight: 300;
+            color: var(--color-ash);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer__legal a:hover { color: var(--color-limestone); }
+
+        /* ============================================ SCROLL REVEAL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(2rem);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--d, 0) * 100ms),
+                        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--d, 0) * 100ms);
+        }
+
+        .reveal--visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================ ANIMATIONS */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(1.8rem); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        /* ============================================ RESPONSIVE */
+        @media (max-width: 900px) {
+            .nav__right { gap: 1.5rem; }
+            .nav__phone { display: none; }
+
+            .stats__inner { grid-template-columns: repeat(2, 1fr); }
+            .stat::after { display: none; }
+
+            .services__grid { grid-template-columns: 1fr; }
+            .services__col:last-child { padding-top: 0; }
+
+            .portfolio__grid { grid-template-columns: 1fr; }
+            .portfolio-item:nth-child(even) { margin-top: 0; }
+            .portfolio-item__img,
+            .portfolio-item:nth-child(even) .portfolio-item__img { aspect-ratio: 16 / 10; }
+
+            .footer__inner { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 680px) {
+            .nav { padding: 0 5vw; height: 4rem; }
+            .nav__descriptor { display: none; }
+            .nav__right .nav__link-item { display: none; }
+            .nav__hamburger { display: flex; }
+
+            .hero__content { padding: 0 5vw; padding-bottom: 4rem; }
+            .hero__title { font-size: clamp(2.6rem, 11vw, 3.8rem); }
+            .hero__description { font-size: 0.88rem; }
+            .hero__scroll { display: none; }
+
+            .estimator { flex-direction: column; max-width: 100%; }
+            .estimator__field { border-right: 1px solid rgba(90, 122, 98, 0.35); border-bottom: none; }
+            .estimator__btn { padding: 1rem; }
+
+            .stats__inner { grid-template-columns: 1fr 1fr; }
+
+            .portfolio__header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
+            .footer__inner { grid-template-columns: 1fr; }
+            .footer__bottom { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+
+        @media (max-width: 400px) {
+            .hero__title { font-size: 2.4rem; }
+            .stats__inner { grid-template-columns: 1fr; text-align: center; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-delay: 0s !important;
+                transition-duration: 0.01ms !important;
+            }
+            .reveal { opacity: 1; transform: none; }
+        }
+
+        /* ============================================ MOBILE MENU */
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 99;
+            background: rgba(14, 31, 20, 0.98);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .mobile-menu--open { opacity: 1; pointer-events: all; }
+
+        .mobile-menu__link {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: var(--color-chalk);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu__link:hover { color: var(--color-sandstone); }
+
+        .mobile-menu__phone {
+            font-family: var(--font-body);
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            color: var(--color-chalk);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu__phone:hover { color: var(--color-sandstone); }
+
+        .mobile-menu__close {
+            position: absolute;
+            top: 1.3rem;
+            right: 5vw;
+            background: none;
+            border: none;
+            color: var(--color-chalk);
+            font-size: 1.6rem;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-weight: 200;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav" id="mainNav">
+        <a href="#" class="nav__logo">
+            <span class="nav__wordmark">Stone <span class="nav__wordmark-amp">&amp;</span> Grove</span>
+            <span class="nav__descriptor">Landscape Architecture</span>
+        </a>
+        <ul class="nav__right">
+            <li class="nav__link-item"><a href="#services" class="nav__link">Services</a></li>
+            <li class="nav__link-item"><a href="#portfolio" class="nav__link">Portfolio</a></li>
+            <li class="nav__link-item"><a href="#about" class="nav__link">Company</a></li>
+            <li class="nav__link-item"><a href="#contact" class="ghost-btn">Contact</a></li>
+            <li class="nav__link-item"><a href="tel:6479301110" class="nav__phone">647 930 1110</a></li>
+            <li>
+                <button class="nav__hamburger" id="menuToggle" aria-label="Open menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu__close" id="menuClose" aria-label="Close menu">&times;</button>
+        <a href="#services" class="mobile-menu__link">Services</a>
+        <a href="#portfolio" class="mobile-menu__link">Portfolio</a>
+        <a href="#about" class="mobile-menu__link">Company</a>
+        <a href="#contact" class="mobile-menu__link">Contact</a>
+        <a href="tel:6479301110" class="mobile-menu__phone">647 930 1110</a>
+    </div>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero">
+        <div class="hero__media">
+            <img class="hero__img"
+                 src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80"
+                 alt="Luxury outdoor architecture at evening"
+                 loading="eager">
+        </div>
+        <div class="hero__overlay"></div>
+        <div class="hero__grain"></div>
+
+        <div class="hero__content">
+            <div class="hero__rule"></div>
+            <span class="hero__eyebrow">L U X U R Y &ensp; O U T D O O R &ensp; S P A C E S</span>
+            <h1 class="hero__title">Leave A Lasting<br>Impression</h1>
+            <p class="hero__description">
+                We design and build timeless outdoor environments&thinsp;&mdash;&thinsp;from grand poolside retreats
+                to intimate garden sanctuaries&thinsp;&mdash;&thinsp;where architecture meets the living landscape.
+            </p>
+            <div class="estimator">
+                <div class="estimator__field">
+                    <input class="estimator__input" type="text"
+                           placeholder="Enter your property address..."
+                           aria-label="Property address for project estimate">
+                    <div class="estimator__accent"></div>
+                </div>
+                <button class="estimator__btn">Get Your Estimate</button>
+            </div>
+            <span class="estimator__label">Complimentary consultation &middot; No commitment required</span>
+        </div>
+
+        <div class="hero__scroll">
+            <span class="hero__scroll-label">Scroll</span>
+            <div class="hero__scroll-bar"></div>
+        </div>
+    </section>
+
+    <!-- ==================== STATS ==================== -->
+    <section class="stats">
+        <div class="stats__inner">
+            <div class="stat reveal" style="--d:0">
+                <span class="stat__number">22</span>
+                <span class="stat__label">Years of Excellence</span>
+            </div>
+            <div class="stat reveal" style="--d:1">
+                <span class="stat__number">500+</span>
+                <span class="stat__label">Projects Delivered</span>
+            </div>
+            <div class="stat reveal" style="--d:2">
+                <span class="stat__number">14</span>
+                <span class="stat__label">Design Awards</span>
+            </div>
+            <div class="stat reveal" style="--d:3">
+                <span class="stat__number">$180M+</span>
+                <span class="stat__label">Portfolio Value</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SERVICES ==================== -->
+    <section class="services" id="services">
+        <div class="services__inner">
+            <div class="services__header reveal">
+                <span class="section-eyebrow">What We Create</span>
+                <h2 class="section-heading">Crafting Outdoor<br>Masterworks</h2>
+            </div>
+            <div class="services__grid">
+                <div class="services__col">
+                    <div class="service-item reveal" style="--d:0">
+                        <span class="service-item__number">01</span>
+                        <div>
+                            <h3 class="service-item__title">Landscape Design &amp; Build</h3>
+                            <p class="service-item__desc">Full-service landscape architecture from initial concept through final planting. We integrate terrain, light, and living elements into cohesive outdoor narratives.</p>
+                        </div>
+                    </div>
+                    <div class="service-item reveal" style="--d:1">
+                        <span class="service-item__number">02</span>
+                        <div>
+                            <h3 class="service-item__title">Hardscaping</h3>
+                            <p class="service-item__desc">Custom stonework, retaining walls, and premium natural pavers laid with precision. Every surface is engineered for permanence and grace.</p>
+                        </div>
+                    </div>
+                    <div class="service-item reveal" style="--d:2">
+                        <span class="service-item__number">03</span>
+                        <div>
+                            <h3 class="service-item__title">Softscaping</h3>
+                            <p class="service-item__desc">Curated planting designs that evolve with the seasons, creating living architecture that breathes movement and color into your grounds.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="services__col">
+                    <div class="service-item reveal" style="--d:1">
+                        <span class="service-item__number">04</span>
+                        <div>
+                            <h3 class="service-item__title">Outdoor Kitchens &amp; Living</h3>
+                            <p class="service-item__desc">Fully appointed outdoor kitchens, dining pavilions, and lounge areas designed for year-round entertaining at the highest standard.</p>
+                        </div>
+                    </div>
+                    <div class="service-item reveal" style="--d:2">
+                        <span class="service-item__number">05</span>
+                        <div>
+                            <h3 class="service-item__title">Water Features &amp; Pools</h3>
+                            <p class="service-item__desc">From infinity-edge pools to naturalized waterfalls, we create aquatic environments that anchor your landscape with serenity and spectacle.</p>
+                        </div>
+                    </div>
+                    <div class="service-item reveal" style="--d:3">
+                        <span class="service-item__number">06</span>
+                        <div>
+                            <h3 class="service-item__title">Architectural Lighting</h3>
+                            <p class="service-item__desc">Sculptural lighting systems that transform your property after dark&thinsp;&mdash;&thinsp;revealing textures, defining pathways, and extending the hours of outdoor living.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PORTFOLIO ==================== -->
+    <section class="portfolio" id="portfolio">
+        <div class="portfolio__inner">
+            <div class="portfolio__header">
+                <div class="reveal">
+                    <span class="section-eyebrow">Timeless Designs</span>
+                    <h2 class="section-heading">Our Portfolio</h2>
+                </div>
+                <a href="#" class="ghost-btn reveal" style="--d:1">View All Projects</a>
+            </div>
+            <div class="portfolio__grid">
+                <div class="portfolio-item reveal" style="--d:0">
+                    <img class="portfolio-item__img"
+                         src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                         alt="The Glengrove Estate"
+                         loading="lazy">
+                    <div class="portfolio-item__overlay">
+                        <span class="portfolio-item__number">01</span>
+                        <h3 class="portfolio-item__name">The Glengrove Estate</h3>
+                        <span class="portfolio-item__category">Pool &amp; Terrace Design</span>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal" style="--d:1">
+                    <img class="portfolio-item__img"
+                         src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=800&q=80"
+                         alt="Ravine's Edge"
+                         loading="lazy">
+                    <div class="portfolio-item__overlay">
+                        <span class="portfolio-item__number">02</span>
+                        <h3 class="portfolio-item__name">Ravine&rsquo;s Edge</h3>
+                        <span class="portfolio-item__category">Naturalized Landscape</span>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal" style="--d:2">
+                    <img class="portfolio-item__img"
+                         src="https://images.unsplash.com/photo-1584738766473-61c083514bf4?auto=format&fit=crop&w=800&q=80"
+                         alt="The Harrison Retreat"
+                         loading="lazy">
+                    <div class="portfolio-item__overlay">
+                        <span class="portfolio-item__number">03</span>
+                        <h3 class="portfolio-item__name">The Harrison Retreat</h3>
+                        <span class="portfolio-item__category">Outdoor Living &amp; Kitchen</span>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal" style="--d:3">
+                    <img class="portfolio-item__img"
+                         src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
+                         alt="Lakeside Modern"
+                         loading="lazy">
+                    <div class="portfolio-item__overlay">
+                        <span class="portfolio-item__number">04</span>
+                        <h3 class="portfolio-item__name">Lakeside Modern</h3>
+                        <span class="portfolio-item__category">Complete Grounds &amp; Lighting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TESTIMONIAL ==================== -->
+    <section class="quote" id="about">
+        <div class="quote__inner reveal">
+            <div class="quote__mark">&ldquo;</div>
+            <p class="quote__text">They transformed our property into something we never imagined possible. Every stone, every plant, every light was placed with intention and artistry.</p>
+            <div class="quote__rule"></div>
+            <span class="quote__author">Catherine &amp; James H.</span>
+            <span class="quote__location">Forest Hill, Toronto</span>
+        </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="cta" id="contact">
+        <div class="cta__inner reveal">
+            <h2 class="cta__heading">Begin Your<br>Transformation</h2>
+            <p class="cta__desc">Schedule a private design consultation with our team. We&rsquo;ll visit your property and craft a vision unique to your landscape.</p>
+            <div class="estimator estimator--static">
+                <div class="estimator__field">
+                    <input class="estimator__input" type="text"
+                           placeholder="Enter your property address..."
+                           aria-label="Property address for consultation">
+                    <div class="estimator__accent"></div>
+                </div>
+                <button class="estimator__btn">Schedule Consultation</button>
+            </div>
+            <span class="cta__phone">Or call us directly&thinsp;&mdash;&thinsp;<a href="tel:6479301110">647 930 1110</a></span>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <div>
+                <div class="footer__brand-name">Stone <span style="color:var(--color-sandstone);font-style:italic;font-weight:400">&amp;</span> Grove</div>
+                <p class="footer__brand-desc">Crafting timeless outdoor environments across the Greater Toronto Area since 2003.</p>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__col-title">Sitemap</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__col-title">Services</h4>
+                <ul>
+                    <li><a href="#">Design &amp; Build</a></li>
+                    <li><a href="#">Hardscaping</a></li>
+                    <li><a href="#">Softscaping</a></li>
+                    <li><a href="#">Outdoor Kitchens</a></li>
+                    <li><a href="#">Water Features</a></li>
+                    <li><a href="#">Lighting</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__col-title">Contact</h4>
+                <ul>
+                    <li><a href="tel:6479301110">647 930 1110</a></li>
+                    <li><a href="mailto:info@stoneandgrove.ca">info@stoneandgrove.ca</a></li>
+                    <li class="footer__contact-item">Toronto, Ontario</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <span class="footer__copyright">&copy; 2026 Stone &amp; Grove. All rights reserved.</span>
+            <div class="footer__legal">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            var nav = document.getElementById('mainNav');
+            var toggle = document.getElementById('menuToggle');
+            var mobileMenu = document.getElementById('mobileMenu');
+            var menuClose = document.getElementById('menuClose');
+            var ticking = false;
+
+            window.addEventListener('scroll', function () {
+                if (!ticking) {
+                    window.requestAnimationFrame(function () {
+                        nav.classList.toggle('nav--solid', window.scrollY > 50);
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            toggle.addEventListener('click', function () {
+                mobileMenu.classList.add('mobile-menu--open');
+            });
+
+            menuClose.addEventListener('click', function () {
+                mobileMenu.classList.remove('mobile-menu--open');
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.remove('mobile-menu--open');
+                });
+            });
+
+            var reveals = document.querySelectorAll('.reveal');
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal--visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+            reveals.forEach(function (el) { observer.observe(el); });
+        })();
+    </script>
+</body>
+</html>
