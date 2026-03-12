@@ -24,19 +24,19 @@
 
 const CLIENT = {
   page: {
-    title: "Stone & Grove — Luxury Landscape Architecture",
+    title: "ACRE LANDSCAPING - Expert Landscaping & Hardscaping",
     metaDescription: ""
   },
 
   brand: {
-    name: "Stone & Grove",
-    tagline: "Landscape Architecture"
+    name: "Acre Landscaping ",
+    tagline: "Landscaping & Hardscaping"
   },
 
   contact: {
-    phone: "6479301110",
-    phoneFormatted: "647 930 1110",
-    email: "info@stoneandgrove.ca",
+    phone: "6474572765",
+    phoneFormatted: "647 457 2765",
+    email: "acre.landscape@gmail.com",
     location: "Toronto, Ontario"
   },
 
@@ -48,18 +48,18 @@ const CLIENT = {
   ],
 
   hero: {
-    imageUrl: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80",
-    imageAlt: "Luxury outdoor architecture at evening",
+    imageUrl: "C:\Users\chase\OneDrive\Desktop\landscapedemo\images\hero.png",
+    imageAlt: "1",
     eyebrow: "L U X U R Y   O U T D O O R   S P A C E S",
     title: "Leave A Lasting<br>Impression",
-    description: "We design and build timeless outdoor environments — from grand poolside retreats to intimate garden sanctuaries — where architecture meets the living landscape.",
+    description: "With 10+ years of experience, we take pride in transforming outdoor spaces into personalized works of art through expert landscaping and construction solutions. From creating lush gardens to crafting durable hardscapes, we've got you covered!",
     estimatorPlaceholder: "Enter your property address...",
     estimatorButton: "Get Your Estimate",
     estimatorLabel: "Complimentary consultation · No commitment required"
   },
 
   stats: [
-    { number: "22", label: "Years of Excellence" },
+    { number: "10+", label: "Years of Excellence" },
     { number: "500+", label: "Projects Delivered" },
     { number: "14", label: "Design Awards" },
     { number: "$180M+", label: "Portfolio Value" }
@@ -103,10 +103,10 @@ const CLIENT = {
     viewAllHref: "#",
     projects: [
       {
-        name: "The Glengrove Estate",
-        category: "Pool & Terrace Design",
+        name: "Kleinburg,Woodbridge.",
+        category: "Backyard Renovation",
         imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "The Glengrove Estate"
+        imageAlt: "0"
       },
       {
         name: "Ravine's Edge",
