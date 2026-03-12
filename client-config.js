@@ -130,9 +130,9 @@ const CLIENT = {
   },
 
   testimonial: {
-    quote: "They transformed our property into something we never imagined possible. Every stone, every plant, every light was placed with intention and artistry.",
-    author: "Catherine & James H.",
-    location: "Forest Hill, Toronto"
+    quote: "Adrian recently completed a backyard renovation for us and the work was outstanding! He provided fast and excellent service, we will definitely be calling Acre Landscaping for our spring clean up next year! 👏🏼",
+    author: "Samantha Velez",
+    location: ""
   },
 
   cta: {
