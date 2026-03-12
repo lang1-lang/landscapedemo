@@ -130,7 +130,7 @@ const CLIENT = {
   },
 
   testimonial: {
-    quote: "Adrian recently completed a backyard renovation for us and the work was outstanding! He provided fast and excellent service, we will definitely be calling Acre Landscaping for our spring clean up next year! 👏🏼",
+    quote: "Adrian recently completed a backyard renovation for us and the work was outstanding! He provided fast and excellent service, we will definitely be calling Acre Landscaping for our spring clean up next year! 👏",
     author: "Samantha Velez",
     location: ""
   },
