@@ -48,8 +48,8 @@ const CLIENT = {
   ],
 
   hero: {
-    imageUrl: "C:\Users\chase\OneDrive\Desktop\landscapedemo\images\hero.png",
-    imageAlt: "1",
+    imageUrl: "images/hero.png",
+    imageAlt: "Acre Landscaping - luxury outdoor spaces",
     eyebrow: "L U X U R Y   O U T D O O R   S P A C E S",
     title: "Leave A Lasting<br>Impression",
     description: "With 10+ years of experience, we take pride in transforming outdoor spaces into personalized works of art through expert landscaping and construction solutions. From creating lush gardens to crafting durable hardscapes, we've got you covered!",
@@ -60,9 +60,9 @@ const CLIENT = {
 
   stats: [
     { number: "10+", label: "Years of Excellence" },
-    { number: "500+", label: "Projects Delivered" },
-    { number: "14", label: "Design Awards" },
-    { number: "$180M+", label: "Portfolio Value" }
+    { number: "?+", label: "Projects Delivered" },
+    { number: "?+", label: "Design Awards" },
+    { number: "?+", label: "Portfolio Value" }
   ],
 
   services: {
@@ -103,28 +103,28 @@ const CLIENT = {
     viewAllHref: "#",
     projects: [
       {
-        name: "Kleinburg,Woodbridge.",
+        name: "Kleinburg, Woodbridge",
         category: "Backyard Renovation",
-        imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "0"
+        imageUrl: "images/proj1.png",
+        imageAlt: "Kleinburg backyard renovation"
       },
       {
-        name: "Ravine's Edge",
-        category: "Naturalized Landscape",
-        imageUrl: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "Ravine's Edge"
+        name: "Project 2",
+        category: "Landscape Design",
+        imageUrl: "images/proj2.png",
+        imageAlt: "Acre Landscaping project"
       },
       {
-        name: "The Harrison Retreat",
-        category: "Outdoor Living & Kitchen",
-        imageUrl: "https://images.unsplash.com/photo-1584738766473-61c083514bf4?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "The Harrison Retreat"
+        name: "Project 3",
+        category: "Landscape Design",
+        imageUrl: "images/proj3.png",
+        imageAlt: "Acre Landscaping project"
       },
       {
-        name: "Lakeside Modern",
-        category: "Complete Grounds & Lighting",
-        imageUrl: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "Lakeside Modern"
+        name: "Project 4",
+        category: "Landscape Design",
+        imageUrl: "images/proj4.png",
+        imageAlt: "Acre Landscaping project"
       }
     ]
   },
@@ -144,8 +144,8 @@ const CLIENT = {
   },
 
   footer: {
-    brandName: "Stone & Grove",
-    brandDesc: "Crafting timeless outdoor environments across the Greater Toronto Area since 2003.",
+    brandName: "Acre Landscaping",
+    brandDesc: "Transforming outdoor spaces with expert landscaping and hardscaping across the Greater Toronto Area.",
     sitemap: [
       { label: "Home", href: "#" },
       { label: "About Us", href: "#" },
@@ -162,7 +162,7 @@ const CLIENT = {
       { label: "Water Features", href: "#" },
       { label: "Lighting", href: "#" }
     ],
-    copyright: "© 2026 Stone & Grove. All rights reserved.",
+    copyright: "© 2026 Acre Landscaping. All rights reserved.",
     legal: [
       { label: "Privacy", href: "#" },
       { label: "Terms", href: "#" }
